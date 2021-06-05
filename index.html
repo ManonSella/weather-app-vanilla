@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/3686c6d29f.js" crossorigin="anonymous"></script>
     <link 
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
         rel="stylesheet"
@@ -20,10 +21,10 @@
     <div class="container">
         <div class="main-information">
             <h1 id="searched-location">
-                Kobe Japan 🇯🇵
+                Kobe, JP 🇯🇵
             </h1>
             <h2 class="temperature border border-danger rounded-circle" id="temperatureCelsius">
-                21°C<br/>🌤
+                <span>21°C</span><br/>🌤
             </h2>
             <h2 id="description">
                 Mostly sunny
@@ -36,16 +37,29 @@
         </div>
         <div class="location">
             <form id="location-form">
-                <label for="location-input">Location:</label>
-                <input id="location-input" type="text" placeholder="Enter location 🔍"
-                autocomplete="off"
-                autofocus="on"
-                />
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <label for="location-input">
+                            <span class="sr-only">Location:</span>
+                            <i class="fas fa-globe-asia"></i>
+                        </label>
+                    </span>
+                    <input
+                        type="text"
+                        id="location-input"
+                        class="form-control"
+                        placeholder="Enter location 🔍"
+                        autocomplete="off"
+                        autofocus="on"
+                    />
+                    <button id="current-location" class="input-group-text" type="button">
+                        <span class="sr-only">Current Location</span>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </button>
+                </div>
             </form>
         </div>
-        <button>
-            Current Location
-        </button>
+
         <ul id="details">
             <li>Humidity 💧 <span id="humidity">37</span>%</li>
             <li>Wind 🌬 <span id="wind">18</span> km/h</li>
@@ -68,15 +82,12 @@
                 Fri<br/>12-19°<br/>🌧
             </div>
         </div>
-    </div> 
-    <br />
-    <p>
-        <small>
-            <center>
+        <p id="footer">
+            <small>
                 <a href="https://github.com/ManonSella/Weather-Application">Open source code by Manon Sella</a>
-            </center>
-        </small>
-    </p>
+            </small>
+        </p>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

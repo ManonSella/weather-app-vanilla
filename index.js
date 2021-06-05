@@ -1,11 +1,23 @@
 let now = new Date();
 let calendar = document.querySelector(".calendar");
-calendar.innerHTML = "Sunday, 21:57";
-let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = days[now.getDay()];
 let hours = now.getHours();
 let minutes = now.getMinutes();
 calendar.innerHTML = `${day}, ${hours}:${minutes}`;
+
+let countryIcons = {
+    JP: '🇯🇵',
+    FR: '🇫🇷',
+    US: '🇺🇸',
+    IT: '🇮🇹',
+    ES: '🇪🇸',
+    GB: '🇬🇧',
+    DE: '🇩🇪',
+    RU: '🇷🇺',
+    AU: '🇦🇺',
+    PL: '🇵🇱'
+}
 
 function showLocation(event) {
      event.preventDefault();
@@ -17,19 +29,20 @@ function showLocation(event) {
  let locationForm = document.querySelector("#location-form");
  locationForm.addEventListener("submit", showLocation);
 
- let temperatureFromCelsiusToFahrenheit = document.querySelector("#temperatureCelsius"); 
- let temperature = 21;
+ let temperatureFromCelsiusToFahrenheit = document.querySelector("#temperatureCelsius span"); 
  let temperatureInCelsius = true;
  temperatureFromCelsiusToFahrenheit.addEventListener("click", changeTemperatureUnit);
 
- function changeTemperatureUnit() {
+ function changeTemperatureUnit(event) {
+     let span = event.target;
+     let temperature = span.innerHTML.replace('°C', '').replace('°F', '');
      if (temperatureInCelsius === true) {
         temperature = (temperature * 9 / 5) + 32
-        temperatureFromCelsiusToFahrenheit.innerHTML = `${temperature}°F<br/>🌤`;
+        temperatureFromCelsiusToFahrenheit.innerHTML = `${temperature}°F`;
         temperatureInCelsius = false;
      } else {
          temperature = (temperature - 32) * 5 / 9
-         temperatureFromCelsiusToFahrenheit.innerHTML = `${temperature}°C<br/>🌤`;
+         temperatureFromCelsiusToFahrenheit.innerHTML = `${temperature}°C`;
          temperatureInCelsius = true;
      }
  }
@@ -46,12 +59,18 @@ function onResponse(response) {
     let description = response.data.weather[0].description;
     let humidity = response.data.main.humidity;
     let wind = response.data.wind.speed * 3.28;
+    let icon = response.data.weather[0].icon;
+    let iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
 
-    temperatureElement.innerHTML = `${temperature}°C`;
+    temperatureElement.innerHTML = `<span>${temperature}°C</span><br/><img src="${iconUrl}" alt="${description}" />`;
     descriptionElement.innerHTML = description;
     humidityElement.innerHTML = humidity;
     windElement.innerHTML = wind.toPrecision(3);
-    cityElement.innerHTML = response.data.name;
+    cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country} ${countryIcons[response.data.sys.country] || ''}`;
+
+    temperatureInCelsius = true;
+    temperatureFromCelsiusToFahrenheit = document.querySelector("#temperatureCelsius span"); 
+    temperatureFromCelsiusToFahrenheit.addEventListener("click", changeTemperatureUnit);
 }
 
 function getCurrentLocation() {
