@@ -4,7 +4,12 @@ let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 let day = days[now.getDay()];
 let hours = now.getHours();
 let minutes = now.getMinutes();
-calendar.innerHTML = `${day}, ${hours}:${minutes}`;
+
+if (minutes < 10) {
+    calendar.innerHTML = `${day}, ${hours}:0${minutes}`;
+} else {
+    calendar.innerHTML = `${day}, ${hours}:${minutes}`;
+}
 
 let countryIcons = {
     JP: '🇯🇵',
