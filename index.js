@@ -172,7 +172,7 @@ function showLocation(event) {
 
 function onFormSubmit(event) {
     event.preventDefault();
-    let url = `http://api.openweathermap.org/geo/1.0/direct?q=${locationInputElement.value}&appid=${apiKey}`
+    let url = `https://api.openweathermap.org/geo/1.0/direct?q=${locationInputElement.value}&appid=${apiKey}`
     locationInputElement.value = '';
     axios.get(url).then(onGeocodingResponse);
 }
@@ -194,7 +194,7 @@ function onResponse(response) {
     let humidity = response.data.current.humidity;
     let wind = response.data.current.wind_speed * 3.28;
     let icon = response.data.current.weather[0].icon;
-    let iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
+    let iconUrl = `https://openweathermap.org/img/w/${icon}.png`;
 
     temperatureElement.innerHTML = `<span>${temperature}°C</span><br/><img src="${iconUrl}" alt="${description}" />`;
     descriptionElement.innerHTML = description;
@@ -210,31 +210,31 @@ function onResponse(response) {
     let forecastmin0 = Math.round(response.data.daily[0].temp.min);
     let forecastmax0 = Math.round(response.data.daily[0].temp.max);
     let mondayIcon = response.data.daily[0].weather[0].icon;
-    let mondayIconUrl = `http://openweathermap.org/img/w/${mondayIcon}.png`;
+    let mondayIconUrl = `https://openweathermap.org/img/w/${mondayIcon}.png`;
     let mondayIconDescription = response.data.daily[0].weather[0].description;
     
     let forecastmin1 = Math.round(response.data.daily[1].temp.min);
     let forecastmax1 = Math.round(response.data.daily[1].temp.max);
     let tuesdayIcon = response.data.daily[1].weather[0].icon;
-    let tuesdayIconUrl = `http://openweathermap.org/img/w/${tuesdayIcon}.png`;
+    let tuesdayIconUrl = `https://openweathermap.org/img/w/${tuesdayIcon}.png`;
     let tuesdayIconDescription = response.data.daily[1].weather[0].description;
 
     let forecastmin2 = Math.round(response.data.daily[2].temp.min);
     let forecastmax2 = Math.round(response.data.daily[2].temp.max);
     let wednesdayIcon = response.data.daily[2].weather[0].icon;
-    let wednesdayIconUrl = `http://openweathermap.org/img/w/${wednesdayIcon}.png`;
+    let wednesdayIconUrl = `https://openweathermap.org/img/w/${wednesdayIcon}.png`;
     let wednesdayIconDescription = response.data.daily[2].weather[0].description;
 
     let forecastmin3 = Math.round(response.data.daily[3].temp.min);
     let forecastmax3 = Math.round(response.data.daily[3].temp.max);
     let thursdayIcon = response.data.daily[3].weather[0].icon;
-    let thursdayIconUrl = `http://openweathermap.org/img/w/${thursdayIcon}.png`;
+    let thursdayIconUrl = `https://openweathermap.org/img/w/${thursdayIcon}.png`;
     let thursdayIconDescription = response.data.daily[3].weather[0].description;
 
     let forecastmin4 = Math.round(response.data.daily[4].temp.min);
     let forecastmax4 = Math.round(response.data.daily[4].temp.max);
     let fridayIcon = response.data.daily[4].weather[0].icon;
-    let fridayIconUrl = `http://openweathermap.org/img/w/${fridayIcon}.png`;
+    let fridayIconUrl = `https://openweathermap.org/img/w/${fridayIcon}.png`;
     let fridayIconDescription = response.data.daily[4].weather[0].description;
        
     forecastMondayElement.innerHTML = `Mon<br/>${forecastmin0}-${forecastmax0}°<br/><img src="${mondayIconUrl}" alt="${mondayIconDescription}" />`; 
@@ -251,7 +251,7 @@ function getCurrentLocation() {
 function handleLocation(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    let url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+    let url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
     axios.get(url).then(onGeocodingResponse);
 }
 
