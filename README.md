@@ -3,6 +3,10 @@
 This is a weather forecast application that provides the current date, temperatures in both Celsius and Fahrenheit, humidity percentage, wind speed, and the general weather represented by an icon, for the next five days. 
 The application fetches data from a public API provided by OpenWeather Map website, which covers weather forecasts for over 150,000 cities around the world.
 
+## Preview
+
+![Screenshot 2024-07-26 at 15 58 35](https://github.com/user-attachments/assets/36fff63b-09f1-485d-90d6-84c8b2c3a3e8)
+
 ## Technologies Used
 
 - JavaScript (API calls)
@@ -18,10 +22,6 @@ The application fetches data from a public API provided by OpenWeather Map websi
 - Wind speed display
 - Weather icon representation
 - Five-day forecast
-
-## Preview
-
-![Screenshot 2024-07-26 at 15 58 35](https://github.com/user-attachments/assets/36fff63b-09f1-485d-90d6-84c8b2c3a3e8)
 
 ## API
 
