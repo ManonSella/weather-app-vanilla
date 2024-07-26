@@ -5,7 +5,7 @@ The application fetches data from a public API provided by OpenWeather Map websi
 
 ## Preview
 
-![Screenshot 2024-07-26 at 15 58 35](https://github.com/user-attachments/assets/36fff63b-09f1-485d-90d6-84c8b2c3a3e8)
+![_Users_Manon_Projects_weather-app-vanilla_index html](https://github.com/user-attachments/assets/7c64f78b-2f47-48ab-9f0d-b312d8dbe47e)
 
 ## Technologies Used
 
