@@ -10,6 +10,7 @@ The application fetches data from a public API provided by OpenWeather Map websi
 ## Technologies Used
 
 - JavaScript (API calls)
+- Axios Library
 - HTML
 - CSS
 - Bootstrap
